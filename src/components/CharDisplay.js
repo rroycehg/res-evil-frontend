@@ -1,8 +1,5 @@
 function CharDisplay() {
-
-    return(
-        <div>Display Here</div>
-    )
+  return <div>Display Contents Here</div>;
 }
 
-export default CharDisplay
+export default CharDisplay;

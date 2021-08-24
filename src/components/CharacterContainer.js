@@ -8,7 +8,9 @@ function CharacterContainer({characters}) {
         <div>
         <CharDisplay />
         {characters.map(char => 
-            <CharacterCard name={char.name}
+            <CharacterCard 
+                key={char.id}
+                name={char.name}
                 affiliation={char.affiliation}
                 bio={char.bio}
                 img={char.img}

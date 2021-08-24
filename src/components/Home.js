@@ -1,6 +1,8 @@
+import { Route, Router, Switch } from "react-router-dom";
 import React, {useState, useEffect} from "react"
 import CharacterContainer from "./CharacterContainer"
 import FavoriteContainer from "./FavoriteContainer"
+import Signup from "./Signup";
 
 
 
@@ -20,8 +22,12 @@ function Home() {
 
     return (
         <div>
-            <CharacterContainer characters={characters}/>
-            {/* <FavoriteContainer /> */}
+            <Switch>
+            <Route path="/login" component= {() => <Login /> }></Route>    
+            <Route path="/signup" component= {() => <Signup /> }></Route>
+            <Route path="/favorites" component= {() => <FavoriteContainer /> }></Route>
+            <Route path="/" component= {() => <CharacterContainer characters={characters}/> }></Route>
+            </Switch>
         </div>
         
     )

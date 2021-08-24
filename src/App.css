@@ -1,8 +1,53 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+#res{
+  border-style: double;
+  display: inline-block;
+  margin: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+
+.res-img{
+  height: 400px;
+  padding-bottom: 20px;
+}
+
+
+span.stats {
+ font-size: 20px;
+ font-weight:bold;
+}
+
+#card-up{
+  margin:auto;
+  border: 2px solid black;
+  outline: lightblue 10px;
+  margin-bottom: 5%;  
+  padding: 15%;
+  text-align: center;
+}
+
+
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -36,3 +81,23 @@
     transform: rotate(360deg);
   }
 }
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+} */

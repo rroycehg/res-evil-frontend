@@ -10,6 +10,9 @@ function CharacterContainer({ characters }) {
       affiliation={char.affiliation}
       bio={char.bio}
       img={char.img}
+      vit={char.VIT}
+      str={char.STR}
+      def={char.DEF}
     />
   ));
   return (

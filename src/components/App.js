@@ -1,6 +1,5 @@
-// import './src/App.css';
-import Home from './Home';
-import NavBar from './NavBar';
+import Home from "./Home";
+import NavBar from "./NavBar";
 
 function App() {
   return (

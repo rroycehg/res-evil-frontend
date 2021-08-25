@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
 import App from './components/App';
 import { BrowserRouter as Router } from "react-router-dom";
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom";
+import "./App.css";
+import reportWebVitals from "./reportWebVitals";
+import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,7 +12,7 @@ ReactDOM.render(
     <App />
     </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

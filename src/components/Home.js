@@ -1,30 +1,40 @@
-import { Route, Router, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import React, {useState, useEffect} from "react"
 import CharacterContainer from "./CharacterContainer"
 import FavoriteContainer from "./FavoriteContainer"
 import Signup from "./Signup";
+import Login from "./Login"
 
 
 
 
 function Home() {
+const [characters, setCharacters] = useState([]);
+const [user, setUser] = useState(null);
 
-    const [characters, setCharacters] = useState([])
+useEffect(() => {
+    fetch("/me").then((r) => {
+        if (r.ok) {
+        r.json().then((user) => setUser(user));
+        }
+    });
+    }, []);
 
-    useEffect(() => {
-    fetch(`http://localhost:3000/characters`)
-      .then((res) => res.json())
-      .then((json) => {
-        setCharacters(json);
-      })
+useEffect(() => {
+fetch(`http://localhost:3000/characters`)
+    .then((res) => res.json())
+    .then((json) => {
+    setCharacters(json);
+    })
     }, [] )
 
+    console.log(user)
 
     return (
         <div>
             <Switch>
             <Route path="/login" component= {() => <Login /> }></Route>    
-            <Route path="/signup" component= {() => <Signup /> }></Route>
+            <Route path="/signup" component= {() => <Signup setUser={setUser} /> }></Route>
             <Route path="/favorites" component= {() => <FavoriteContainer /> }></Route>
             <Route path="/" component= {() => <CharacterContainer characters={characters}/> }></Route>
             </Switch>
@@ -34,4 +44,4 @@ function Home() {
 
 }
 
-export default Home
+export default Home;

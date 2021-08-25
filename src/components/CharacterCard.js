@@ -1,37 +1,49 @@
 import { Button, Card } from "semantic-ui-react";
 import { useState } from "react";
 
-function CharacterCard({ name, affiliation, bio, img, vit, str, def }) {
+function CharacterCard({ char, getChar }) {
   const [bioToggle, setBioToggle] = useState(true);
+
+  // name={char.name}
+  // affiliation={char.affiliation}
+  // bio={char.bio}
+  // img={char.img}
+  // vit={char.VIT}
+  // str={char.STR}
+  // def={char.DEF}
 
   const bioDisplay = () => {
     setBioToggle(!bioToggle);
     console.log(bioToggle);
   };
+
   return (
     <Card id="res">
-      <img src={img} alt={name} wrapped ui="false" className="res-img" />
+      <img src={char.img} wrapped ui="false" className="res-img" />
       <Card.Content>
-        <Card.Header>{name}</Card.Header>
+        <Card.Header>{char.name}</Card.Header>
         <Card.Meta>
-          <span className="affiliation">{affiliation}</span>
+          <span className="affiliation">{char.affiliation}</span>
         </Card.Meta>
         {!bioToggle ? (
-          <Card.Description className="res-bio">{bio}</Card.Description>
+          <Card.Description className="res-bio">
+            Bio: {char.bio}
+          </Card.Description>
         ) : null}
       </Card.Content>
       <Card.Content id="stats" extra>
         <a>
-          <span className="stats">VIT: {vit} </span>
-          <span className="stats">STR: {str} </span>
-          <span className="stats">DEF: {def} </span>
+          <span className="stats">VIT: {char.VIT} </span>
+          <span className="stats">STR: {char.STR} </span>
+          <span className="stats">DEF: {char.DEF} </span>
         </a>
       </Card.Content>
       <span>
-        <Button content="Bio" onClick={bioDisplay} primary />
+        <Button content="Expand" onClick={bioDisplay} primary />
       </span>
       <span>
-        <Button content="Favorite" secondary />
+        <Button content="Check" onClick={() => getChar(char)} secondary />
+        <Button content="Add to Favorite">⭐</Button>
       </span>
     </Card>
   );

@@ -34,14 +34,31 @@ span.stats {
   font-weight: bold;
 }
 
-#card-up {
-  margin: auto;
-  border: 2px solid black;
-  outline: lightblue 10px;
-  margin-bottom: 5%;
-  padding: 15%;
+#card-up{
+  border: 2px solid red;
+  margin-bottom: 4%;  
+  margin-top: 50px;
+  padding: 20px;
   text-align: center;
 }
+
+
+td.bio{
+  font-size: 20px;
+  width: 40%;
+}
+
+td.id-name{
+  font-weight: bold;
+  font-size: 30px
+}
+
+
+tr.header-text{
+  font-size: 20px;
+
+}
+
 
 /* .App-logo {
   height: 40vmin;

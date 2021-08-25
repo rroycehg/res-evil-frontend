@@ -5,6 +5,7 @@ import FavoriteContainer from "./FavoriteContainer";
 
 function Home() {
   const [characters, setCharacters] = useState([]);
+  const [thisChar, setThisChar] = useState({});
 
   useEffect(() => {
     fetch(`http://localhost:3000/characters`)
@@ -14,9 +15,17 @@ function Home() {
       });
   }, []);
 
+  const getChar = (charObj) => {
+    setThisChar(charObj);
+  };
+
   return (
     <div>
-      <CharacterContainer characters={characters} />
+      <CharacterContainer
+        characters={characters}
+        getChar={getChar}
+        thisChar={thisChar}
+      />
       {/* <FavoriteContainer /> */}
     </div>
   );

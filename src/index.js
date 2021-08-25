@@ -1,13 +1,16 @@
-import React from "react";
+import React from 'react';
+import App from './components/App';
+import { BrowserRouter as Router } from "react-router-dom";
 import ReactDOM from "react-dom";
 import "./App.css";
-import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(
   <React.StrictMode>
+    <Router>
     <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

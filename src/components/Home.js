@@ -143,6 +143,7 @@ function Home() {
               deleteFromCharList={deleteFromCharList}
               clickEdit={clickEdit}
               clickAddNew={clickAddNew}
+              handleFavClick={addToFavs}
             />
           )}
         ></Route>

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useHistory } from "react";
+import styled from "styled-components";
 
 function Login({user, setUser}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    // let history = useHistory();
+
 function handleSubmit(e) {
     e.preventDefault();
-    console.log('i was clicked')
     fetch("http://localhost:3000/login", {
     method: "POST",
     headers: {
@@ -21,11 +23,12 @@ function handleSubmit(e) {
         res.json().then((user) => setUser(user));
     }
     })
+    // history.push("/")
     }
 
 return (
     <div>
-    <form onSubmit={handleSubmit}>
+    <LoginForm onSubmit={handleSubmit}>
         <h1>Login</h1>
         <label htmlFor="username">Username</label>
         <input
@@ -44,15 +47,23 @@ return (
         onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-    </form>
+    </LoginForm>
     <div>
-    { user ? <h1>Welcome, {user.username}!</h1> : <h1>Please Login</h1> }
+    { user ? <h1>Welcome, {user.username}!</h1> : <h1>Please Login to Add Favorites!</h1> }
         
        
     </div>
     </div>
 );
 }
+
+// Styled components
+
+const LoginForm = styled.form`
+    display: grid;
+    width: 50pt;
+    padding-left: 45%;
+`
     
     
     export default Login

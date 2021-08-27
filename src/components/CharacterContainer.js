@@ -5,7 +5,7 @@ import NewChar from "./NewChar";
 import Editor from "./Editor";
 import { Card } from "semantic-ui-react";
 
-function CharacterContainer({ characters, getChar, thisChar, visible }) {
+function CharacterContainer({ characters, getChar, thisChar, visible, handleFavClick }) {
   const [isClosed, setIsClosed] = useState(false);
   const cards = characters.map((char) => (
     <CharacterCard

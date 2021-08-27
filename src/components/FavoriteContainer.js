@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
-import CharacterCard from "./CharacterCard";
-import CharDisplay from "./CharDisplay";
+import FavoriteCard from "./FavoriteCard";
 import { Button, Card } from "semantic-ui-react";
 
 function FavoriteContainer({user, getChar, thisChar}) {
@@ -9,7 +7,7 @@ function FavoriteContainer({user, getChar, thisChar}) {
     
 
 
-    useEffect((user) => {
+    useEffect(() => {
     fetch("http://localhost:3000/favorites")
     .then((res) => res.json())
     .then((json) => {setFavChar(json);
@@ -17,9 +15,10 @@ function FavoriteContainer({user, getChar, thisChar}) {
     }, [])
 
 
+
     const favCard = favChar.map((char) => {
-        if (char.user_id === user.id) {
-            return <CharacterCard key={char.id} char={char} getChar={getChar} />
+        if (char.user_id === user.id && !favChar.includes(char.user_id)) {
+            return <FavoriteCard key={char.id} char={char} getChar={getChar}/>
         } else {
             console.log("hiiii")
             return null
@@ -30,7 +29,8 @@ function FavoriteContainer({user, getChar, thisChar}) {
     
     return(
         <div>
-            <CharDisplay thisChar={thisChar}/>
+            <h1>My Favorites</h1>
+            {/* <CharDisplay thisChar={thisChar}/> */}
             <Card.Group itemsPerRow={4}>{favCard}</Card.Group>;
         </div>
     )

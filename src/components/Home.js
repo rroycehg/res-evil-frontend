@@ -11,6 +11,7 @@ function Home() {
   const [thisChar, setThisChar] = useState({});
   const [user, setUser] = useState(null);
   const [visible, setVisible] = useState(false);
+ 
 
   useEffect(() => {
     fetch(`http://localhost:3000/characters`)
@@ -27,17 +28,6 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-
-  const getChar = (charObj) => {
-    setThisChar(charObj);
-  };
 
   useEffect(() => {
     fetch("http://localhost:3000/me").then((r) => {
@@ -97,6 +87,7 @@ function Home() {
               characters={characters}
               getChar={getChar}
               thisChar={thisChar}
+              handleFavClick={addToFavs}
             />
           )}
         ></Route>

@@ -34,8 +34,12 @@ function handleLogoutClick() {
                     <button onClick={handleLogoutClick}>Logout</button>
                     ) : (
                     <>
+                    <SpanLinks>
                         <Link to="/signup">Signup</Link>
+                    </SpanLinks>
+                    <SpanLinks>
                         <Link to="/login">Login</Link>
+                    </SpanLinks>
                     </>
                 )}
             </SpanLinks>

@@ -1,5 +1,5 @@
 import { Button } from "semantic-ui-react";
-function CharDisplay({ thisChar, clickToClose }) {
+function CharDisplay({ thisChar, clickToClose, clickEdit, clickAddNew }) {
   return (
     <div id="card-up">
       <table className="card-display">
@@ -41,13 +41,10 @@ function CharDisplay({ thisChar, clickToClose }) {
             <td className="id-name">{thisChar.name}</td>
             <td className="buttons">
               <span>
-                <Button content="Edit Form 🔒" />
+                <Button content="Edit Form 🔒" onClick={clickEdit} />
               </span>
               <span>
-                <Button content="Create" />
-              </span>
-              <span>
-                <Button content="Add to Favorites" />
+                <Button content="Create" onClick={clickAddNew} />
               </span>
             </td>
           </tr>

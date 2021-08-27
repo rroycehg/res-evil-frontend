@@ -1,16 +1,15 @@
 import { Button, Card } from "semantic-ui-react";
 import { useState } from "react";
 
-function CharacterCard({ char, getChar, handleFavClick }) {
+function CharacterCard({ char, getChar, handleFavClick, deleteFromCharList }) {
   const [bioToggle, setBioToggle] = useState(true);
 
-  // name={char.name}
-  // affiliation={char.affiliation}
-  // bio={char.bio}
-  // img={char.img}
-  // vit={char.VIT}
-  // str={char.STR}
-  // def={char.DEF}
+  const handleDelete = () => {
+    fetch(`http://localhost:3000/characters/${char.id}`, {
+      method: "DELETE",
+    });
+    deleteFromCharList(char.id);
+  };
 
   const bioDisplay = () => {
     setBioToggle(!bioToggle);
@@ -43,7 +42,12 @@ function CharacterCard({ char, getChar, handleFavClick }) {
       </span>
       <span>
         <Button content="Check" onClick={() => getChar(char)} secondary />
-        <Button content="Add to Favorite" onClick={() => handleFavClick(char)}>⭐</Button>
+        <Button content="Add to Favorite" onClick={() => handleFavClick(char)}>
+          ⭐
+        </Button>
+        <Button content="Delete" onClick={() => handleDelete(char)}>
+          🗑️
+        </Button>
       </span>
     </Card>
   );

@@ -10,7 +10,9 @@ function Home() {
   const [characters, setCharacters] = useState([]);
   const [thisChar, setThisChar] = useState({});
   const [user, setUser] = useState(null);
-  const [visible, setVisible] = useState(false);
+  const [openDisp, setOpenDisp] = useState(false);
+  const [openEditor, setOpenEditor] = useState(false);
+  const [openNew, setOpenNew] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:3000/characters`)
@@ -22,9 +24,49 @@ function Home() {
 
   const getChar = (charObj) => {
     setThisChar(charObj);
-    if (visible === false) {
-      setVisible(!visible);
+    if (openDisp === false) {
+      setOpenDisp(!openDisp);
     }
+  };
+
+  const clickEdit = () => {
+    if (openEditor === false) {
+      setOpenEditor(!openEditor);
+    }
+    if (openDisp === true) {
+      setOpenDisp(!openDisp);
+    }
+  };
+
+  const clickAddNew = () => {
+    if (openNew === false) {
+      setOpenNew(!openNew);
+    }
+
+    if (openDisp === true) {
+      setOpenDisp(!openDisp);
+    }
+  };
+
+  const addtoCharList = (newChar) => {
+    let newCharArray = [...characters, newChar];
+    setCharacters(newCharArray);
+  };
+
+  const deleteFromCharList = (thisChar) => {
+    let newCharArray = characters.filter((char) => char.id !== thisChar);
+    setCharacters(newCharArray);
+  };
+
+  const updateCharList = (updatedChar) => {
+    let newCharArray = characters.map((char) => {
+      if (char.id === updatedChar.id) {
+        return updatedChar;
+      } else {
+        return char;
+      }
+    });
+    setCharacters(newCharArray);
   };
 
   useEffect(() => {
@@ -34,10 +76,6 @@ function Home() {
       }
     });
   }, []);
-
-  const getChar = (charObj) => {
-    setThisChar(charObj);
-  };
 
   useEffect(() => {
     fetch("http://localhost:3000/me").then((r) => {
@@ -93,10 +131,18 @@ function Home() {
           path="/"
           component={() => (
             <CharacterContainer
-              visible={visible}
+              handleFavClick={addToFavs}
+              openDisp={openDisp}
+              openEditor={openEditor}
+              openNew={openNew}
               characters={characters}
               getChar={getChar}
               thisChar={thisChar}
+              updateCharList={updateCharList}
+              addtoCharList={addtoCharList}
+              deleteFromCharList={deleteFromCharList}
+              clickEdit={clickEdit}
+              clickAddNew={clickAddNew}
             />
           )}
         ></Route>

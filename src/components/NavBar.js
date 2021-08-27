@@ -1,7 +1,19 @@
-import { NavLink } from "react-router-dom"
+import { Link, NavLink, useHistory } from "react-router-dom"
 import styled from "styled-components";
 
-function NavBar() {
+function NavBar({ user, setUser }) {
+
+let history = useHistory();
+
+function handleLogoutClick() {
+    fetch("http://localhost:3000/logout", { method: "DELETE" }).then((res) => {
+        if (res.ok) {
+        setUser(null);
+        }
+    });
+    history.push("/login");
+    }
+    
 
     return(
 
@@ -11,13 +23,21 @@ function NavBar() {
                 <NavLink exact to="/">Home</NavLink>
             </SpanLinks>
             <SpanLinks>
+                {user ? (
                 <NavLink to="/favorites">My Favorites</NavLink>
+                ) : (
+                <NavLink to="/login">My Favorites</NavLink>
+                )}
             </SpanLinks>
             <SpanLinks>
-                <NavLink to="/login">Login</NavLink>
-            </SpanLinks>
-            <SpanLinks>
-                <NavLink to="/signup">Sign Up</NavLink>
+                {user ? (
+                    <button onClick={handleLogoutClick}>Logout</button>
+                    ) : (
+                    <>
+                        <Link to="/signup">Signup</Link>
+                        <Link to="/login">Login</Link>
+                    </>
+                )}
             </SpanLinks>
         </LinksDiv>
     )

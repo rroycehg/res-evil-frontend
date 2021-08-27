@@ -1,7 +1,7 @@
 import { Button, Card } from "semantic-ui-react";
 import { useState } from "react";
 
-function CharacterCard({ char, getChar }) {
+function CharacterCard({ char, getChar, handleFavClick }) {
   const [bioToggle, setBioToggle] = useState(true);
 
   // name={char.name}
@@ -43,7 +43,7 @@ function CharacterCard({ char, getChar }) {
       </span>
       <span>
         <Button content="Check" onClick={() => getChar(char)} secondary />
-        <Button content="Add to Favorite">⭐</Button>
+        <Button content="Add to Favorite" onClick={() => handleFavClick(char)}>⭐</Button>
       </span>
     </Card>
   );

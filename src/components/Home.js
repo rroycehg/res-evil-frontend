@@ -9,6 +9,7 @@ function Home() {
   const [characters, setCharacters] = useState([]);
   const [thisChar, setThisChar] = useState({});
   const [user, setUser] = useState(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:3000/characters`)
@@ -20,6 +21,9 @@ function Home() {
 
   const getChar = (charObj) => {
     setThisChar(charObj);
+    if (visible === false) {
+      setVisible(!visible);
+    }
   };
 
   useEffect(() => {
@@ -46,6 +50,7 @@ function Home() {
           path="/"
           component={() => (
             <CharacterContainer
+              visible={visible}
               characters={characters}
               getChar={getChar}
               thisChar={thisChar}

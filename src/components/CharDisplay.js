@@ -1,5 +1,5 @@
-import { Grid } from "semantic-ui-react";
-function CharDisplay({ thisChar }) {
+import { Button } from "semantic-ui-react";
+function CharDisplay({ thisChar, clickToClose }) {
   return (
     <div id="card-up">
       <table className="card-display">
@@ -7,35 +7,51 @@ function CharDisplay({ thisChar }) {
           <tr className="header-text">
             <th>ID</th>
             <th>Bio</th>
-            <th>Actions</th>
+            <th>Stats</th>
           </tr>
+          <button className="close-button" onClick={clickToClose}>
+            x
+          </button>
         </thead>
-        <tbody>
-          <tr>
-            <td className="id-name">{thisChar.name}</td>
-          </tr>
+        <tbody className="body-content">
           <tr>
             <td>
               <img src={thisChar.img} alt="res-char-img" />
             </td>
             <td className="bio">{thisChar.bio}</td>
+            <td>
+              <div class="stat-bar" data-total="1000" data-value="1000">
+                <div id="hp" class="bar">
+                  <h3>HP: {thisChar.VIT}</h3>
+                </div>
+              </div>
+              <div class="stat-bar" data-total="1000" data-value="1000">
+                <div id="str" class="bar">
+                  <h3>STR: {thisChar.STR}</h3>
+                </div>
+              </div>
+              <div class="stat-bar" data-total="1000" data-value="1000">
+                <div id="def" class="bar">
+                  <h3>DEF: {thisChar.DEF}</h3>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td className="id-name">{thisChar.name}</td>
+            <td className="buttons">
+              <span>
+                <Button content="Edit Form 🔒" />
+              </span>
+              <span>
+                <Button content="Create" />
+              </span>
+              <span>
+                <Button content="Add to Favorites" />
+              </span>
+            </td>
           </tr>
         </tbody>
-        {/* <h3>Display Contents Here</h3>
-      <Grid id="card-up">
-        <Grid.Column width={4}>
-          <div>
-            <h3>{thisChar.name}</h3>
-            <img src={thisChar.img} />
-          </div>
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <h3>Bio: {thisChar.bio}</h3>
-        </Grid.Column>
-        <Grid.Column width={2}>
-          <h3>EDIT FAVORITE</h3>
-        </Grid.Column>
-      </Grid> */}
       </table>
     </div>
   );
